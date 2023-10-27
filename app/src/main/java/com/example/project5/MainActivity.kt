@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.project5.Data.DataForm
 import com.example.project5.Data.DataSource.jenis
+import com.example.project5.Data.DataSource.status
 import com.example.project5.ui.theme.Project5Theme
 
 class MainActivity : ComponentActivity() {
@@ -96,7 +97,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
         singleLine = true,
         shape = MaterialTheme.shapes.large,
         modifier = Modifier.fillMaxWidth(),
-        label = { Text(text = "Nama Lengkap")},
+        label = { Text(text = "Username")},
         onValueChange ={
             textNama =it
         }
@@ -117,7 +118,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
         singleLine = true,
         shape = MaterialTheme.shapes.large,
         modifier = Modifier.fillMaxWidth(),
-        label = { Text(text = "Alamat")},
+        label = { Text(text = "Email")},
         onValueChange ={
             textAlmt =it
         }
@@ -125,6 +126,21 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
     SelectJK(
         options =  jenis.map{ id -> context.resources.getString(id)},
         onSelectionChanged = {cobaViewModel.setJenisK(it)})
+
+    SelectJK(
+        options = status.map{ id -> context.resources.getString(id)},
+        onSelectionChanged = {cobaViewModel.setStatus(it)})
+    OutlinedTextField(
+        value = textAlmt,
+        singleLine = true,
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(text = "Email")},
+        onValueChange ={
+            textAlmt =it
+        }
+    )
+
     Button(
         modifier = Modifier.fillMaxWidth(),
         onClick = {
@@ -132,7 +148,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
         }
     ) {
         Text(
-            text = stringResource(R.string.submit),
+            text = stringResource(R.string.regis),
             fontSize = 16.sp
         )
 
@@ -159,22 +175,22 @@ fun TextHasil(namanya: String, telponnya: String, jenisnya: String, alamatnya : 
             .fillMaxWidth()
     ){
         Text(
-            text = "Nama : " + namanya,
-            modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 4.dp)
-        )
-        Text(
-            text = "Telepon : " + telponnya,
-            modifier = Modifier
-                .padding(horizontal = 10.dp, vertical = 5.dp)
-        )
-        Text(
             text = "Jenis Kelamin : " + jenisnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
         )
         Text(
-            text = "Alamat : " + jenisnya,
+            text = "Status : " + namanya,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 4.dp)
+        )
+        Text(
+            text = "Alamat : " + alamatnya,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 5.dp)
+        )
+        Text(
+            text = "Telepon : " + telponnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
         )
