@@ -2,5 +2,8 @@
     <string name="app_name">Project5</string>
     <string name="laki">Laki-Laki</string>
     <string name="wanita">Perempuan</string>
-    <string name="submit" >Submit</string>
+    <string name="blmnikah">Belum Menikah</string>
+    <string name="nikah">Menikah</string>
+    <string name="regis" >Register</string>
+
 </resources>
