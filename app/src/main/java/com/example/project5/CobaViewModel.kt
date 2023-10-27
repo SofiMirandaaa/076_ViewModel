@@ -13,6 +13,8 @@ import kotlinx.coroutines.flow.update
 class CobaViewModel : ViewModel() {
     var namaUsr: String by mutableStateOf("")
         private  set
+    var email: String by mutableStateOf("")
+        private  set
     var noTlp: String by mutableStateOf("")
         private set
     var jenisKl: String by mutableStateOf("")
@@ -21,11 +23,12 @@ class CobaViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(DataForm())
     val uiState: StateFlow<DataForm> = _uiState.asStateFlow()
 
-    fun insertData(nm: String,tlp: String, jk: String, almt: String) {
+    fun insertData(nm: String,tlp: String, jk: String, almt: String, mail: String) {
         namaUsr = nm;
         noTlp = tlp;
         jenisKl = jk;
         alamat = almt;
+        email = mail;
     }
     fun setJenisK(pilihJK: String) {
         _uiState.update { currentState -> currentState.copy(sex = pilihJK) }
